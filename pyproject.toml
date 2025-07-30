@@ -1,0 +1,42 @@
+[project]
+name = "speaker-id"
+version = "0.1.0"
+description = "Detect unique speakers in text or books and export JSON for multi-voice TTS."
+authors = [{ name = "Valiantsin Kareyeu", email = "vkareyeu@outlook.com" }]
+readme = "README.md"
+license = { text = "GNU General Public License v3.0" }
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "spacy~=3.8",
+    "textacy~=0.13",
+    "requests~=2.32",
+    "scikit-learn~=1.6",
+    "openai~=1.63",
+    "ebooklib~=0.18",
+    "beautifulsoup4~=4.13",
+    "typer~=0.16.0",
+    "pydantic~=2.11.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "pytest",
+]
+
+[tool.poetry]
+packages = [
+    { include = "src" },
+    { include = "scripts" }
+]
+
+
+[project.scripts]
+predict_open_ai = "scripts.predict.predict_open_ai:app"
+predict_local_llm = "scripts.predict.predict_local_llm:app"
+predict_llama = "scripts.predict.predict_llama:app"
+evaluate_open_ai = "scripts.predict.evaluate_open_ai:app"
+evaluate_local_llm = "scripts.predict.evaluate_local_llm:app"
+evaluate_llama = "scripts.predict.evaluate_llama:app"
+process_text_to_text_meta = "scripts.process.process_text_to_text_meta:app"
+process_text_meta_for_training_set = "scripts.process.process_text_meta_for_training_set:app"

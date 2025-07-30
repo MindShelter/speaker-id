@@ -1,0 +1,50 @@
+line-length = 120
+indent-width = 4
+extend-exclude = ["src/prompts"]
+
+[lint]
+select = ["ALL"]
+ignore = [
+    "ANN204",  # Unused type annotation
+    "COM812",  # Missing-trailing-comma
+    "CPY001",  # Missing copyright notice at top of file
+    "C901",    # Too complex
+    "D100",    # Missing docstring in public module
+    "D104",    # Missing docstring in public package
+    "D203",    # Blank line required before class docstring
+    "D211",    # No-blank-line-before-class
+    "D213",    # Multi-line-summary-second-line
+    "EM101",   # Raw-string-in-exception
+    "EM102",   # Raw-string-in-exception-args
+    "FIX002",  # Line-contains-todo
+    "FBT001",  # Boolean-argument-positional
+    "FBT003",  # Boolean-parameter-positional
+    "ISC001",  # Conflicts with formatter ruff
+    "INP001",  # Implicit namespace package (__init__.py not found)
+    "TD002",   # Missing author in TODO `# TODO(<author_name>): ...`
+    "TD003",   # Missing-todo-link
+    "TRY003",  # Raise-vanilla-args
+    "T201",    # Print statement
+    "D101",    # Missing docstring in public class
+    "D102",    # Missing docstring in public method
+    "D103",    # Missing docstring in public method
+    "D105",    # Missing docstring in magic method
+    "D107",    # Missing docstring in __init__
+    "UP007",   # Use `X | Y` for type annotations
+    "RUF001",  # String contains ambiguous `’`,
+    "PLC0415", # 'Import' should be at the top-level of a file
+]
+
+[lint.per-file-ignores]
+"test_*.py" = [
+    "S101",    # asserts allowed in tests...
+    "ARG",     # Unused function args -> fixtures nevertheless are functionally relevant...
+    "FBT",     # Don't care about booleans as positional arguments in tests, e.g. via @pytest.mark.parametrize()
+    "PLR2004", # Magic value used in comparison, ...
+    "S311",    # Standard pseudo-random generators are not suitable for cryptographic purposes
+]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
